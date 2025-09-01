@@ -113,7 +113,7 @@ h3 {
 
     div {
         margin: 0 !important;
-        background: url(/me/external-link.svg);
+        background: url(/external-link.svg);
         width: 16px;
         height: 16px;
     }
@@ -160,7 +160,7 @@ h3 {
     }
 
     a>div {
-        background: url(/me/rocket.svg);
+        background: url(/rocket.svg);
     }
 }
 
@@ -248,20 +248,20 @@ h3~.group {
     }
 
     a:nth-child(1) {
-        background-image: url(/me/linkedin.svg);
+        background-image: url(/linkedin.svg);
     }
 
     a:nth-child(2) {
-        background-image: url(/me/instagram.svg);
+        background-image: url(/instagram.svg);
     }
 
     a:nth-child(3) {
-        background-image: url(/me/substack.svg);
+        background-image: url(/substack.svg);
         background-position: 3px 1.5px;
     }
 
     a:nth-child(4) {
-        background-image: url(/me/mastodon.svg);
+        background-image: url(/mastodon.svg);
         height: 26px;
     }
 }
