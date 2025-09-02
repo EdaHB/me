@@ -68,6 +68,7 @@ h1 {
     font-style: normal;
     color: var(--first-level-text);
     font-size: 3.5rem;
+    text-align: center;
 }
 
 h1~p {
