@@ -36,10 +36,21 @@ body {
     background: var(--background);
     padding: 0;
     margin: 0;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     color: var(--first-level-text);
+}
+
+#vanta-canvas {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
 }
 
 main {
@@ -53,6 +64,7 @@ main {
     padding: 0 16px;
     padding-top: min(7%, 200px);
     flex-grow: 1;
+    z-index: 1;
 }
 
 h1,
@@ -171,35 +183,11 @@ h3 {
     flex-direction: row;
     gap: 16px;
     flex-wrap: wrap;
-
-    .c-2:nth-child(1) {
-        flex: 1;
-    }
-
-    .c-2:nth-child(2) {
-        flex: 1;
-    }
-
-    .c-2:last-child {
-        flex: 1;
-    }
 }
 
-@media only screen and (max-width: 650px) {
-    .group {
-
-        .c-2:nth-child(1) {
-            flex: 1;
-        }
-
-        .c-2:nth-child(2) {
-            flex: 1;
-        }
-
-        .c-2:last-child {
-            flex: 2;
-        }
-    }
+.group .c-2 {
+    flex: 1;
+    min-width: 280px;
 }
 
 h3~.group {
@@ -241,6 +229,7 @@ h3~.group {
     justify-content: end;
     gap: 24px;
     align-items: center;
+    z-index: 1;
 
     a {
         width: 24px;
@@ -276,4 +265,178 @@ h3~.group {
     color: var(--second-level-text);
     font-size: 0.75rem;
     text-align: center;
+}
+
+/* Product Cards List and Card Layout */
+.product-cards-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    border: 1px solid var(--second-level-border);
+    background-color: var(--first-level-background);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.product-card:hover {
+    border-color: var(--first-level-border);
+    transform: translateY(-2px);
+}
+
+.product-logo-container {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--second-level-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.product-title {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--first-level-text);
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.product-description {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--second-level-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.product-tag {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--button-background);
+    border: 1px solid var(--button-border);
+    color: var(--second-level-text);
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 160px;
+    flex-shrink: 0;
+    align-items: stretch;
+}
+
+.product-btn {
+    background: var(--button-background);
+    border: 1px solid var(--button-border);
+    color: var(--first-level-text);
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.product-btn:hover {
+    background: #1c1c1c;
+    border-color: #444444;
+}
+
+.product-btn span {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    margin-top: -3px;
+}
+
+.product-btn div.icon-link {
+    margin: 0 !important;
+    background: url(/external-link.svg);
+    width: 14px;
+    height: 14px;
+}
+
+@media only screen and (max-width: 650px) {
+    .product-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .product-logo-container {
+        align-self: flex-start;
+    }
+
+    .product-actions {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .product-btn {
+        flex: 1;
+    }
+}
+
+.appibara-link {
+    color: #e17100;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(225, 113, 0, 0.5);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.appibara-link:hover {
+    color: #ffaa55;
+    border-bottom-color: rgba(255, 170, 85, 0.8);
+    border-bottom-style: solid;
 }
